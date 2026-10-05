@@ -306,7 +306,7 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 | | |
 |---|---|
-| ![Simulation](media\teleop_controller.webm) | ![Hardware](docs/images/hardware.jpg) |
+| ![Simulation](media/teleop_controller.webm) | ![Hardware](docs/images/hardware.jpg) |
 | Gazebo Fortress simulation | Physical robot |
 
 > _Screenshots and demo videos coming soon._
