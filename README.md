@@ -105,7 +105,7 @@ Hexapod/
 
 ## System Architecture
 
-![System architecture](media\exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
+![System architecture](media/exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
 
 ---
 
@@ -306,7 +306,7 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 | | |
 |---|---|
-| ![Simulation](docs/images/sim.png) | ![Hardware](docs/images/hardware.jpg) |
+| ![Simulation](media/hexa_sim.mp4) | ![Hardware](docs/images/hardware.jpg) |
 | Gazebo Fortress simulation | Physical robot |
 
 > _Screenshots and demo videos coming soon._
