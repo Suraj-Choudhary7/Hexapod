@@ -318,7 +318,7 @@ ros2 run joy joy_node
 
 ---
 
-## Roadmap
+## Future Roadmap
 
 - [ ] IMU-based body levelling
 - [ ] Terrain-adaptive foot force estimation
