@@ -261,6 +261,13 @@ ros2 run hexa_control hexa_node
 # Terminal 2 — hardware driver
 ros2 run hexa_control dynamixels_driver \
   --ros-args -p device:=/dev/ttyUSB0 -p baudrate:=1000000
+
+# Terminal 3 - control method
+source ~/hexa_ws/install/setup.bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard    #For keyboard teleop
+                OR
+ros2 run teleop_twist_joy teleop_node --ros-args -p scale_linear.x:=0.05 -p scale_angular.z:=0.05   #For controller teleop
+ros2 run joy joy_node
 ```
 
 > Make sure your user is in the `dialout` group: `sudo usermod -aG dialout $USER`
