@@ -28,9 +28,9 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
 
 ---
 
-## What we Built & Learned
+## What I Built & Learned
 
-This project started from zero — no existing codebase, no pre-made libraries for the walking controller. Here is what we worked through end-to-end:
+This project started from zero — no existing codebase, no pre-made libraries for the walking controller. Here is what I worked through end-to-end:
 
 **Mechanical & URDF**
 - Designed 6 identical leg assemblies, each with 3 revolute joints (coxa → femur → tibia), and assembled them symmetrically around a hexagonal base body.
@@ -105,35 +105,7 @@ Hexapod/
 
 ## System Architecture
 
-```
- Keyboard / Joystick
-        │
-        ▼  /cmd_vel  (geometry_msgs/Twist)
- ┌─────────────────┐
- │   hexa_node     │  50 Hz control loop
- │  ─────────────  │
- │  CPG (Hopf)     │  → phase for each leg
- │  Gait planner   │  → foot trajectory (x, y, z)
- │  IK solver      │  → joint angles (θ1, θ2, θ3)
- │  State machine  │  RESTING / TRANSITIONING / WALKING
- └────────┬────────┘
-          │  /leg_trajectory_controller/joint_trajectory
-          │  (JointTrajectory, 18 joints)
-          │
-    ┌─────┴──────────────────────────────────┐
-    │                                         │
-    ▼  (simulation)                           ▼  (hardware)
- ┌──────────┐                         ┌──────────────────────┐
- │sim_relay │ direction/offset fix     │ dynamixels_controller│
- └────┬─────┘                         │  GroupSyncWrite       │
-      │                               │  18 × Dynamixel AX   │
-      ▼                               │  /dev/ttyUSB0 1Mbaud  │
- ┌──────────────────────┐             └──────────────────────┘
- │ Gazebo Fortress       │
- │ gz_ros2_control       │
- │ JointTrajectoryCtrl   │
- └──────────────────────┘
-```
+![System architecture](media\exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
 
 ---
 
@@ -228,7 +200,7 @@ LH = Left Half   RH = Right Half
 - **ROS 2 Humble** (Ubuntu 22.04)
 - **Gazebo Fortress** with `ros_gz_sim`, `ros_gz_bridge`, `gz_ros2_control`
 - **ros2_control** stack: `controller_manager`, `joint_state_broadcaster`, `joint_trajectory_controller`
-- Python: `numpy` (for gait CPG) , `rclpy`
+- Python: `numpy` (for gait CPG)
 - Hardware only: `dynamixel_sdk` Python package
 
 ```bash
