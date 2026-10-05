@@ -309,9 +309,9 @@ ros2 run joy joy_node
 
 <!-- Add your screenshots and videos here once you have them -->
 
-###Gazebo Fortress simulation
+### Gazebo Fortress simulation
 ![Simulation](media/robot-demo.gif)![Hardware](docs/images/hardware.jpg)
-###Physical robot
+### Physical robot
 ![Hardware](docs/images/hardware.jpg)
 
 > _Screenshots and demo videos coming soon._
