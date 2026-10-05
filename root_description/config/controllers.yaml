@@ -1,0 +1,48 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    leg_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+leg_trajectory_controller:
+  ros__parameters:
+    joints:
+      - FH_LH_1
+      - FH_LH_2
+      - FH_LH_3
+      - FH_RH_1
+      - FH_RH_2
+      - FH_RH_3
+      - MH_LH_1
+      - MH_LH_2
+      - MH_LH_3
+      - MH_RH_1
+      - MH_RH_2
+      - MH_RH_3
+      - BH_RH_1
+      - BH_RH_2
+      - BH_RH_3
+      - BH_LH_1
+      - BH_LH_2
+      - BH_LH_3
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: true
+    # open_loop_control: the controller executes position commands directly without
+    # checking that the current joint state matches the trajectory start point.
+    # Required here because hexa_node streams new 1-point trajectories at 50Hz —
+    # each new goal preempts the previous one before the joint has fully moved,
+    # so a closed-loop controller would keep rejecting/aborting goals.
+    open_loop_control: true
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.5

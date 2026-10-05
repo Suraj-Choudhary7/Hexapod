@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ros2_control hardware interface for Gazebo Fortress (gz_ros2_control) -->
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <xacro:macro name="joint_interface" params="joint_name">
+      <joint name="${joint_name}">
+        <command_interface name="position">
+          <param name="initial_value">0.0</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </xacro:macro>
+
+    <!-- Front hips -->
+    <xacro:joint_interface joint_name="FH_LH_1"/>
+    <xacro:joint_interface joint_name="FH_LH_2"/>
+    <xacro:joint_interface joint_name="FH_LH_3"/>
+    <xacro:joint_interface joint_name="FH_RH_1"/>
+    <xacro:joint_interface joint_name="FH_RH_2"/>
+    <xacro:joint_interface joint_name="FH_RH_3"/>
+
+    <!-- Middle hips -->
+    <xacro:joint_interface joint_name="MH_LH_1"/>
+    <xacro:joint_interface joint_name="MH_LH_2"/>
+    <xacro:joint_interface joint_name="MH_LH_3"/>
+    <xacro:joint_interface joint_name="MH_RH_1"/>
+    <xacro:joint_interface joint_name="MH_RH_2"/>
+    <xacro:joint_interface joint_name="MH_RH_3"/>
+
+    <!-- Back hips -->
+    <xacro:joint_interface joint_name="BH_RH_1"/>
+    <xacro:joint_interface joint_name="BH_RH_2"/>
+    <xacro:joint_interface joint_name="BH_RH_3"/>
+    <xacro:joint_interface joint_name="BH_LH_1"/>
+    <xacro:joint_interface joint_name="BH_LH_2"/>
+    <xacro:joint_interface joint_name="BH_LH_3"/>
+  </ros2_control>
+
+</robot>

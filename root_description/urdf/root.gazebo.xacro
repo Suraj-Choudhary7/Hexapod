@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Ground truth 3D odometry and TF broadcaster from Gazebo physics -->
+  <gazebo>
+    <plugin filename="gz-sim-odometry-publisher-system"
+            name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>odom</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <odom_topic>/model/root/odometry</odom_topic>
+      <tf_topic>/model/root/tf</tf_topic>
+      <dimensions>3</dimensions>
+    </plugin>
+  </gazebo>
+
+  <!-- Gazebo Fortress (gz sim) ros2_control plugin -->
+  <gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find root_description)/config/controllers.yaml</parameters>
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+    </plugin>
+  </gazebo>
+
+  <!-- Explicit material + double_sided per link.
+       double_sided=true disables back-face culling, which fixes the
+       "transparent/hollow" look caused by inconsistent STL normals
+       from the CAD export. -->
+
+  <gazebo reference="base_link">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_4">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_5">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_6">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="Dynamaxial_top_plate_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_4">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_5">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="connect_top_plate_6">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_LH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_LH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_LH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_RH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_RH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_FH_RH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_LH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_LH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_LH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_RH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_RH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_MH_RH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_RH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_RH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_RH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_LH_2">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_LH_3">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+  </gazebo>
+
+  <gazebo reference="link_BH_LH_1">
+    <material>
+      <ambient>0.55 0.55 0.58 1.0</ambient>
+      <diffuse>0.65 0.65 0.68 1.0</diffuse>
+      <specular>0.7 0.7 0.7 1.0</specular>
+      <double_sided>true</double_sided>
+    </material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
+
+</robot>

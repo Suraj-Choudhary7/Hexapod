@@ -1,0 +1,922 @@
+<?xml version="1.0" ?>
+<robot name="root" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find root_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find root_description)/urdf/root.ros2_control.xacro" />
+<xacro:include filename="$(find root_description)/urdf/root.gazebo.xacro" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="9.140424259375743e-15 0.0015878993733457899 7.514578729508475e-15" rpy="0 0 1"/>
+    <mass value="0.9002111959231273"/>
+    <inertia ixx="0.004855" iyy="0.006556" izz="0.001703" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Dynamaxial_1">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Dynamaxial_2">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="Dynamaxial_3">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Dynamaxial_4">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Dynamaxial_5">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="Dynamaxial_6">
+  <inertial>
+    <origin xyz="0.008972645350292519 0.02009922137903257 0.009778378451293368" rpy="0 0 0"/>
+    <mass value="0.3595998121158479"/>
+    <inertia ixx="9.9e-05" iyy="9e-05" izz="6.9e-05" ixy="-1e-06" iyz="-2e-06" ixz="-1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.054062 -0.0 -0.125401" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+
+<link name="Dynamaxial_top_plate_1">
+  <inertial>
+    <origin xyz="-0.04860069324280111 0.0005424823737990442 -0.1042254181604586" rpy="0 0 0"/>
+    <mass value="0.7717368116814207"/>
+    <inertia ixx="0.00373" iyy="0.004913" izz="0.001184" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.045733 -0.0365 -0.097839" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/top_plate.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.045733 -0.0365 -0.097839" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_1">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_2">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_3">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_4">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_5">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="connect_top_plate_6">
+  <inertial>
+    <origin xyz="-0.0055922169544652955 -0.0048193928964247665 0.09582519093081569" rpy="0 0 0"/>
+    <mass value="0.018497767072455207"/>
+    <inertia ixx="3e-06" iyy="6e-06" izz="3e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/Dynamaxial_cover_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.058754 -0.041 -0.017944" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Joint1" type="fixed">
+  <origin xyz="0.057062 0.0 0.13401" rpy="0 -0.01 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_1"/>
+</joint>
+
+<joint name="Joint2" type="fixed">
+  <origin xyz="0.085 0.0 0.0055" rpy="0 1.13 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_2"/>
+</joint>
+
+<joint name="Joint3" type="fixed">
+  <origin xyz="0.06462 0.0 -0.130201" rpy="0 2.27 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_3"/>
+</joint>
+
+<joint name="Joint4" type="fixed">
+  <origin xyz="-0.057462 0.0 -0.133201" rpy="0 3.14 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_4"/>
+</joint>
+
+<joint name="Joint5" type="fixed">
+  <origin xyz="-0.085 0.0 -0.00370" rpy="0 -2.01 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_5"/>
+</joint>
+
+<joint name="Joint6" type="fixed">
+  <origin xyz="-0.065062 0.0 0.128401" rpy="0 -0.9 0"/>
+  <parent link="base_link"/>
+  <child link="Dynamaxial_6"/>
+</joint>
+
+<joint name="Joint7" type="fixed">
+  <origin xyz="-0.013021 -0.0045 0.079895" rpy="0 0 0"/>
+  <parent link="connect_top_plate_1"/>
+  <child link="Dynamaxial_top_plate_1"/>
+</joint>
+
+<joint name="Joint8" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_1"/>
+  <child link="connect_top_plate_1"/>
+</joint>
+
+<joint name="Joint9" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_2"/>
+  <child link="connect_top_plate_2"/>
+</joint>
+
+<joint name="Joint10" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_3"/>
+  <child link="connect_top_plate_3"/>
+</joint>
+
+<joint name="Joint11" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_4"/>
+  <child link="connect_top_plate_4"/>
+</joint>
+
+<joint name="Joint12" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_5"/>
+  <child link="connect_top_plate_5"/>
+</joint>
+
+<joint name="Joint13" type="fixed">
+  <origin xyz="0.004692 0.041 -0.107457" rpy="0 0 0"/>
+  <parent link="Dynamaxial_6"/>
+  <child link="connect_top_plate_6"/>
+</joint>
+
+<link name="link_FH_LH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_FH_LH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_FH_LH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="FH_LH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_1"/>
+  <child link="link_FH_LH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="FH_LH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_FH_LH_1"/>
+  <child link="link_FH_LH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="FH_LH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_FH_LH_2"/>
+  <child link="link_FH_LH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<link name="link_FH_RH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_FH_RH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_FH_RH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="FH_RH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_6"/>
+  <child link="link_FH_RH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="FH_RH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_FH_RH_1"/>
+  <child link="link_FH_RH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="FH_RH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_FH_RH_2"/>
+  <child link="link_FH_RH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<link name="link_MH_LH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_MH_LH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_MH_LH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="MH_LH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_2"/>
+  <child link="link_MH_LH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="MH_LH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_MH_LH_1"/>
+  <child link="link_MH_LH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="MH_LH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_MH_LH_2"/>
+  <child link="link_MH_LH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<link name="link_MH_RH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_MH_RH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_MH_RH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="MH_RH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_5"/>
+  <child link="link_MH_RH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="MH_RH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_MH_RH_1"/>
+  <child link="link_MH_RH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="MH_RH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_MH_RH_2"/>
+  <child link="link_MH_RH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<link name="link_BH_RH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_BH_RH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_BH_RH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="BH_RH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_4"/>
+  <child link="link_BH_RH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="BH_RH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_BH_RH_1"/>
+  <child link="link_BH_RH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="BH_RH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_BH_RH_2"/>
+  <child link="link_BH_RH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<link name="link_BH_LH_2">
+  <inertial>
+    <origin xyz="0.019526961928152647 0.0040896573040327365 -0.027062240930987157" rpy="0 0 0"/>
+    <mass value="0.5073894324425476"/>
+    <inertia ixx="0.000472" iyy="0.000463" izz="0.00018" ixy="2e-06" iyz="0.000119" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.10125 -0.019 0.0335" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_BH_LH_3">
+  <inertial>
+    <origin xyz="0.02019070727155603 0.017663951482134593 -0.01793253231179917" rpy="0 0 0"/>
+    <mass value="0.532133797474928"/>
+    <inertia ixx="0.000307" iyy="0.00022" izz="0.000199" ixy="-3e-06" iyz="0.000118" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.10185 -0.067009 0.132442" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://root_description/meshes/link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0.067 -0.132" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.012"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_BH_LH_1">
+  <inertial>
+    <origin xyz="-0.00021785660387237116 0.018447696948459432 -0.022506406667710283" rpy="0 0 0"/>
+    <mass value="0.10934456227744341"/>
+    <inertia ixx="4.4e-05" iyy="4.4e-05" izz="4.1e-05" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <box><size>0.06 0.06 0.06</size></box>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="BH_LH_1" type="revolute">
+  <origin xyz="0.015 0.04 0.02" rpy="3.14 0.384 0"/>
+  <parent link="Dynamaxial_3"/>
+  <child link="link_BH_LH_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="BH_LH_2" type="revolute">
+  <origin xyz="-0.01875 0.019 -0.0435" rpy="0 0 0"/>
+  <parent link="link_BH_LH_1"/>
+  <child link="link_BH_LH_2"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+<joint name="BH_LH_3" type="revolute">
+  <origin xyz="0.0006 0.048009 -0.098942" rpy="0 0 0"/>
+  <parent link="link_BH_LH_2"/>
+  <child link="link_BH_LH_3"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
+  <dynamics damping="0.3" friction="0.05"/>
+</joint>
+
+</robot>
