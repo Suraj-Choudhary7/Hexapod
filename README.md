@@ -200,7 +200,7 @@ LH = Left Half   RH = Right Half
 - **ROS 2 Humble** (Ubuntu 22.04)
 - **Gazebo Fortress** with `ros_gz_sim`, `ros_gz_bridge`, `gz_ros2_control`
 - **ros2_control** stack: `controller_manager`, `joint_state_broadcaster`, `joint_trajectory_controller`
-- Python: `numpy` (for gait CPG)
+- Python: `numpy` (for gait CPG) , `rclpy`
 - Hardware only: `dynamixel_sdk` Python package
 
 ```bash
