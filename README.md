@@ -311,7 +311,7 @@ ros2 run joy joy_node
 
 | | |
 |---|---|
-| ![Simulation](media/hexa_sim.gif) | ![Hardware](docs/images/hardware.jpg) |
+| ![Simulation](media/robot-demo.gif) | ![Hardware](docs/images/hardware.jpg) |
 | Gazebo Fortress simulation | Physical robot |
 
 > _Screenshots and demo videos coming soon._
