@@ -28,9 +28,9 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
 
 ---
 
-## What I Built & Learned
+## What we Built & Learned
 
-This project started from zero — no existing codebase, no pre-made libraries for the walking controller. Here is what I worked through end-to-end:
+This project started from zero — no existing codebase, no pre-made libraries for the walking controller. Here is what we worked through end-to-end:
 
 **Mechanical & URDF**
 - Designed 6 identical leg assemblies, each with 3 revolute joints (coxa → femur → tibia), and assembled them symmetrically around a hexagonal base body.
