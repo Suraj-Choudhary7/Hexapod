@@ -297,7 +297,12 @@ You can also use `teleop_twist_keyboard`:
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+or else use `teleop_twist_joy`:
 
+```bash
+ros2 run teleop_twist_joy teleop_node --ros-args -p scale_linear.x:=0.05 -p scale_angular.z:=0.05
+ros2 run joy joy_node
+```
 ---
 
 ## Screenshots & Videos
