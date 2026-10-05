@@ -316,8 +316,6 @@ ros2 run joy joy_node
 
 ![Hardware](media/robot-demo.gif)
 
-> _Screenshots and demo videos coming soon._
-
 ---
 
 ## Future Roadmap
