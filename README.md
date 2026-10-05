@@ -254,6 +254,8 @@ source install/setup.bash
 ```bash
 source install/setup.bash
 ros2 launch root_description gz_sim.launch.py
+OR 
+bash /home/suraj/hexa_ws/run_sim.sh
 ```
 
 This starts: Gazebo Fortress → spawns the robot → loads ros2_control controllers → starts `hexa_node` + `sim_relay`.
