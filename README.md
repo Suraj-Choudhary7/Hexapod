@@ -105,7 +105,7 @@ Hexapod/
 
 ## System Architecture
 
-![System architecture](c:\Users\moham\Downloads\exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
+![System architecture](exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
 
 ---
 
