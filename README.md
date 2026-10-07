@@ -331,4 +331,4 @@ ros2 run joy joy_node
 
 - **SURAJ CHOUDHARY** : `Suraj-Choudhary7`
 - **DARSHAN PANCHAL** : `Darshan-387`
-- **MOHAMMAD AFFAN HAIDER** : `ThatOneNewbGUY`
+- **MOHAMMAD AFFAN HAIDER** : `https://github.com/ThatOneNewbGUY`
