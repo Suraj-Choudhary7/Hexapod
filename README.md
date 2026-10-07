@@ -330,5 +330,5 @@ ros2 run joy joy_node
 ## PROJECT MEMBERS
 
 - [**SURAJ CHOUDHARY**](https://github.com/Suraj-Choudhary7)
-- **DARSHAN PANCHAL** : `Darshan-387`
-- **MOHAMMAD AFFAN HAIDER** : https://github.com/ThatOneNewbGUY
+- [**DARSHAN PANCHAL**](https://github.com/Darshan-387)
+- [**MOHAMMAD AFFAN HAIDER**](https://github.com/ThatOneNewbGUY)
