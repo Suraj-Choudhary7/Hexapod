@@ -1,6 +1,6 @@
 # Hexapod Robot — ROS 2 / Gazebo Fortress
 
-![HexaPod](media/hexapod.png)
+![HexaPod](media/media used/hexapod.png)
 
 A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixel AX-series servos, a hand-derived URDF, and a fully original CPG-based walking controller written in Python on ROS 2 Humble.
 
@@ -59,8 +59,6 @@ This project started from zero — no existing codebase, no pre-made libraries f
 
 **Dynamixel Hardware Driver**
 
-![Dynamixel](media/dynamixel.png)
-
 - Wrote a low-level ROS 2 node that subscribes to the same `JointTrajectory` topic and drives 18 Dynamixel AX servos via **GroupSyncWrite** — one USB packet per control cycle instead of 18 individual writes, keeping latency low.
 - Implemented the angle → raw-value conversion with per-joint direction and zero-offset correction so the same IK angles work identically on both hardware and simulation.
 
@@ -110,7 +108,7 @@ Hexapod/
 
 ## System Architecture
 
-![System Architecture](media/exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
+![System Architecture](media/media used/sys_arch.png)
 
 ---
 
@@ -236,7 +234,7 @@ bash /home/suraj/hexa_ws/run_sim.sh
 ```
 
 This starts: Gazebo Fortress → spawns the robot → loads ros2_control controllers → starts `hexa_node` + `sim_relay`.
-![Gazebo](media/gazebo.jpeg)
+![Gazebo](media/media used /gazebo.jpeg)
 Send velocity commands to make it walk:
 
 ```bash
@@ -278,7 +276,7 @@ ros2 run joy joy_node
 > Make sure your user is in the `dialout` group: `sudo usermod -aG dialout $USER`
 
 ### URDF Viewer (RViz only)
-![Rviz2](media/rviz.jpeg)
+![Rviz2](media/media used/rviz.jpeg)
 ```bash
 ros2 launch root_description display.launch.py
 ```
@@ -314,9 +312,9 @@ ros2 run joy joy_node
 
 <!-- Add your screenshots and videos here once you have them -->
 ### Gazebo Fortress simulation
-![Simulation](media/robot-demo.gif)
+![Simulation](media/media used/robot-demo.gif)
 ### Physical robot
-![Hardware](media/CPG-rotation.gif)
+![Hardware](media/media used/CPG-rotation.gif)
 
 ---
 
