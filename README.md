@@ -314,7 +314,7 @@ ros2 run joy joy_node
 
 ### Physical robot
 
-![Hardware](media/CPG - rotation.gif)
+![Hardware](media/CPG-rotation.gif)
 
 ---
 
