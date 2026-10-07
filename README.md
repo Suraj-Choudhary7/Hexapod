@@ -231,7 +231,7 @@ bash /home/suraj/hexa_ws/run_sim.sh
 ```
 
 This starts: Gazebo Fortress → spawns the robot → loads ros2_control controllers → starts `hexa_node` + `sim_relay`.
-
+![gazebo](media/gazebo.jpeg)
 Send velocity commands to make it walk:
 
 ```bash
@@ -273,7 +273,7 @@ ros2 run joy joy_node
 > Make sure your user is in the `dialout` group: `sudo usermod -aG dialout $USER`
 
 ### URDF Viewer (RViz only)
-
+![rviz](media/rviz.jpeg)
 ```bash
 ros2 launch root_description display.launch.py
 ```
