@@ -311,7 +311,8 @@ ros2 run joy joy_node
 
 | | |
 |---|---|
-| ![Simulation](media/hexa_sim.gif) | ![Hardware](docs/images/hardware.jpg) |
+| ![Simulation](media/hexa_sim.gif) |
+| ![Hardware](docs/images/hardware.jpg) |
 | Gazebo Fortress simulation | Physical robot |
 
 > _Screenshots and demo videos coming soon._
@@ -325,3 +326,9 @@ ros2 run joy joy_node
 - [ ] Navigation stack integration (Nav2 + LiDAR)
 - [ ] Faster gait modes (wave, ripple)
 - [ ] GUI parameter tuner for CPG gains
+
+## PROJECT MEMBERS
+
+- **SURAJ CHOUDHARY** : `Suraj-Choudhary7`
+- **DARSHAN PANCHAL** : `Darshan-387`
+- **MOHAMMAD AFFAN HAIDER** : `ThatOneNewbGUY`
