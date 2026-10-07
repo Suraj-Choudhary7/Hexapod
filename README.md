@@ -1,5 +1,7 @@
 # Hexapod Robot — ROS 2 / Gazebo Fortress
 
+![HexaPod](media/hexapod.png)
+
 A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixel AX-series servos, a hand-derived URDF, and a fully original CPG-based walking controller written in Python on ROS 2 Humble.
 
 <!-- Add a photo or GIF of the robot here -->
@@ -108,7 +110,7 @@ Hexapod/
 
 ## System Architecture
 
-![System architecture](media/exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
+![System Architecture](media/exec-2cdaf2db-641d-4a3c-8d7b-36a4d9fae5a2.png)
 
 ---
 
@@ -234,7 +236,7 @@ bash /home/suraj/hexa_ws/run_sim.sh
 ```
 
 This starts: Gazebo Fortress → spawns the robot → loads ros2_control controllers → starts `hexa_node` + `sim_relay`.
-![gazebo](media/gazebo.jpeg)
+![Gazebo](media/gazebo.jpeg)
 Send velocity commands to make it walk:
 
 ```bash
@@ -276,7 +278,7 @@ ros2 run joy joy_node
 > Make sure your user is in the `dialout` group: `sudo usermod -aG dialout $USER`
 
 ### URDF Viewer (RViz only)
-![rviz](media/rviz.jpeg)
+![Rviz2](media/rviz.jpeg)
 ```bash
 ros2 launch root_description display.launch.py
 ```
