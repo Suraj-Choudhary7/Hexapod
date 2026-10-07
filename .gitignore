@@ -1,0 +1,23 @@
+# VS Code specific files
+.vscode/
+
+# ROS 2 build directories
+build/
+install/
+log/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# C/C++ object files and compiled binaries
+*.o
+*.so
+*.a
+*.out
+
+# OS generated files
+.DS_Store
+*~
