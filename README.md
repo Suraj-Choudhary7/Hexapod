@@ -1,6 +1,6 @@
 # Hexapod Robot — ROS 2 / Gazebo Fortress
 
-A hi 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixel AX-series servos, a hand-derived URDF, and a fully original CPG-based walking controller written in Python on ROS 2 Humble.
+A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixel AX-series servos, a hand-derived URDF, and a fully original CPG-based walking controller written in Python on ROS 2 Humble.
 
 <!-- Add a photo or GIF of the robot here -->
 <!-- ![Robot photo](docs/images/robot.jpg) -->
@@ -60,7 +60,7 @@ This project started from zero — no existing codebase, no pre-made libraries f
 - Implemented the angle → raw-value conversion with per-joint direction and zero-offset correction so the same IK angles work identically on both hardware and simulation.
 
 **Simulation Bridge**
-- Because Gazebo joint directions differ from physical servo directions, I wrote a lightweight `sim_relay` node that intercepts the trajectory, applies per-joint direction and offset corrections, and republishes — keeping `hexa_node` hardware-agnostic.
+- Because Gazebo joint directions differ from physical servo directions, I wrote a lightweight `sim_relay` node that intercepts the trajectory, applies per-joint direction and offset corrections, and republis`hes — keeping `hexa_node` hardware-agnostic.
 
 **Gazebo Fortress Integration**
 - Integrated `gz_ros2_control` so the simulated robot is driven by the same `JointTrajectoryController` as the real one.
@@ -314,7 +314,7 @@ ros2 run joy joy_node
 
 ### Physical robot
 
-![Hardware](media/robot-demo.gif)
+![Hardware](media\CPG - rotation.gif)
 
 ---
 
