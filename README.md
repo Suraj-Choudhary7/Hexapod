@@ -313,13 +313,9 @@ ros2 run joy joy_node
 ## Screenshots & Videos
 
 <!-- Add your screenshots and videos here once you have them -->
-
-| | |
-|---|---|
-| ![Simulation](media/hexa_sim.gif) |
-| ![Hardware](docs/images/hardware.jpg) |
-| Gazebo Fortress simulation | Physical robot |
-
+### Gazebo Fortress simulation
+![Simulation](media/robot-demo.gif)
+### Physical robot
 ![Hardware](media/CPG-rotation.gif)
 
 ---
