@@ -234,7 +234,7 @@ bash /home/suraj/hexa_ws/run_sim.sh
 ```
 
 This starts: Gazebo Fortress → spawns the robot → loads ros2_control controllers → starts `hexa_node` + `sim_relay`.
-![Gazebo](media/media-used /gazebo.jpeg)
+![Gazebo](media/media-used/gazebo.jpeg)
 Send velocity commands to make it walk:
 
 ```bash
