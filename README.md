@@ -56,6 +56,9 @@ This project started from zero — no existing codebase, no pre-made libraries f
 - On `Ctrl+C` / shutdown, `destroy_node()` drives the robot back to rest synchronously before closing, protecting the hardware.
 
 **Dynamixel Hardware Driver**
+
+![Dynamixel](media/dynamixel.png)
+
 - Wrote a low-level ROS 2 node that subscribes to the same `JointTrajectory` topic and drives 18 Dynamixel AX servos via **GroupSyncWrite** — one USB packet per control cycle instead of 18 individual writes, keeping latency low.
 - Implemented the angle → raw-value conversion with per-joint direction and zero-offset correction so the same IK angles work identically on both hardware and simulation.
 
