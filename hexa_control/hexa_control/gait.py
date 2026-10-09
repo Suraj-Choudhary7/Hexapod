@@ -2,9 +2,11 @@
 import math
 import numpy as np
 
+# 6-Leg Order & Tripod Definitions
 LEG_ORDER = ['FH_LH', 'FH_RH', 'MH_LH', 'MH_RH', 'BH_LH', 'BH_RH']
 TRIPOD_A  = ['FH_LH', 'MH_RH', 'BH_LH']
 TRIPOD_B  = ['FH_RH', 'MH_LH', 'BH_RH']
+
 
 def _build_phase_matrix():
     n = len(LEG_ORDER)
@@ -15,20 +17,28 @@ def _build_phase_matrix():
                 phi[i, j] = math.pi
     return phi
 
+
 PHASE_BIAS_MATRIX = _build_phase_matrix()
 
+
 class CpgGait:
-    def __init__(self, frequency=1.0, amplitude=0.08, normal_x=0.215, normal_z=-0.191, phase=0.0, duty_factor=0.70):
+    """
+    Real Coupled Asymmetric Hopf CPG with Duty Factor beta = 0.70 (70% Stance / 30% Swing).
+    """
+
+    def __init__(self, frequency=0.5, amplitude=0.08, normal_x=0.215, normal_z=-0.191, phase=0.0, duty_factor=0.70):
+        # Kinematics and stance parameters
         self.frequency   = frequency
         self.amplitude   = amplitude
         self.normal_x    = normal_x
         self.normal_z    = normal_z
         self.phase       = phase
-        self.duty_factor = duty_factor  
+        self.duty_factor = duty_factor  # beta = 0.70 (70% Stance, 30% Swing)
 
         self.Tripod_A = TRIPOD_A
         self.Tripod_B = TRIPOD_B
 
+        # Leg mounting angles around body (in radians)
         self.leg_mount_angles = {
             'FH_LH':  0.0,
             'MH_LH':  1.13,
@@ -38,18 +48,24 @@ class CpgGait:
             'FH_RH': -0.90,
         }
 
+        # Nominal resting footprints
         self.default_foot_pos = {
             leg: np.array([self.normal_x, 0.0, self.normal_z])
             for leg in LEG_ORDER
         }
 
-        self.mu    = 1.0
-        self.alpha = 5.0
-        self.w     = 1.5
-        self.omega = 2.0 * math.pi * self.frequency   
+        # Hopf CPG Parameters
+        self.mu    = 1.0                              # Target limit cycle radius squared (r = 1.0)
+        self.alpha = 5.0                              # Convergence speed to limit cycle
+        self.w     = 1.5                              # Inter-oscillator coupling strength
+        self.omega = 2.0 * math.pi * self.frequency   # Base angular frequency
+
+        # Asymmetric frequencies: Stance takes 70% of cycle, Swing takes 30%
+        # omega_stance = omega / (2 * beta), omega_swing = omega / (2 * (1 - beta))
         self.omega_stance = self.omega / (2.0 * self.duty_factor)
         self.omega_swing  = self.omega / (2.0 * (1.0 - self.duty_factor))
 
+        # Initialize states (Tripod A at phase 0, Tripod B at phase pi)
         n = len(LEG_ORDER)
         self._x = np.zeros(n)
         self._y = np.zeros(n)
@@ -64,6 +80,7 @@ class CpgGait:
                 self._y[i] = 0.0
 
     def _derivatives(self, x_state, y_state, speed_scale):
+        """Computes dx/dt and dy/dt with asymmetric stance/swing frequency."""
         n = len(LEG_ORDER)
         dx = np.zeros(n)
         dy = np.zeros(n)
@@ -71,14 +88,20 @@ class CpgGait:
         for i in range(n):
             xi, yi = x_state[i], y_state[i]
             r2 = xi**2 + yi**2
+
+            # Asymmetric frequency switching:
+            # yi <= 0 -> Stance phase (slower rotation, 70% duration)
+            # yi > 0  -> Swing phase  (faster rotation, 30% duration)
             if yi <= 0.0:
                 omega_i = self.omega_stance * speed_scale
             else:
                 omega_i = self.omega_swing * speed_scale
 
+            # Hopf oscillator dynamics
             hopf_x = self.alpha * (self.mu - r2) * xi - omega_i * yi
             hopf_y = self.alpha * (self.mu - r2) * yi + omega_i * xi
 
+            # Inter-limb phase coupling
             coupling_x = 0.0
             coupling_y = 0.0
             for j in range(n):
@@ -101,7 +124,9 @@ class CpgGait:
         return dx, dy
 
     def cpg_phase(self, dt, velocity):
+        """RK4 numerical integration."""
         speed_scale = min(1.0, abs(velocity) / 0.02) if velocity > 0.001 else 0.0
+
         x, y = self._x.copy(), self._y.copy()
 
         k1x, k1y = self._derivatives(x,                    y,                    speed_scale)
@@ -119,11 +144,14 @@ class CpgGait:
         i = LEG_ORDER.index(leg)
         xi, yi = self._x[i], self._y[i]
         
+        # Normalized phase angle [0, 2*pi)
         leg_phase = math.atan2(yi, xi) % (2.0 * math.pi)
 
-        shift_x_body = vx * (1.0 / self.frequency) * 0.5 * 1.5
-        shift_y_body = vy * (1.0 / self.frequency) * 0.5 * 1.5
+        # 1. Stride length in robot body frame
+        shift_x_body = vx * (1.0 / self.frequency) * 0.5
+        shift_y_body = vy * (1.0 / self.frequency) * 0.5
 
+        # 2. Transform body stride into local leg frame
         alpha = self.leg_mount_angles[leg]
         shift_x_local =  math.cos(-alpha) * shift_x_body - math.sin(-alpha) * shift_y_body
         shift_y_local =  math.sin(-alpha) * shift_x_body + math.cos(-alpha) * shift_y_body
@@ -132,12 +160,18 @@ class CpgGait:
 
         base_pos = self.default_foot_pos[leg]
 
+        # 3. 70% Stance vs 30% Swing foot trajectory
+        # In this formulation:
+        # leg_phase in [0, pi]     -> Stance (70% time because omega_stance is slower)
+        # leg_phase in [pi, 2*pi]  -> Swing  (30% time because omega_swing is faster)
         if leg_phase < math.pi:
+            # Stance: push ground backward
             progress = leg_phase / math.pi
             dx = -shift_x_local * (progress - 0.5)
             dy = -shift_y_local * (progress - 0.5)
             dz = 0.0
         else:
+            # Swing: lift foot and advance forward quickly
             progress = (leg_phase - math.pi) / math.pi
             dx = shift_x_local * (progress - 0.5)
             dy = shift_y_local * (progress - 0.5)

@@ -8,10 +8,9 @@ from dynamixel_sdk import (
     DXL_LOBYTE, DXL_HIBYTE, COMM_SUCCESS,
 )
 
-# ── AX-12A Control Table Addresses ────────────────────────────────────────────
+# AX-12A Control Table
 ADDR_TORQUE_ENABLE = 24
 ADDR_GOAL_POSITION = 30
-ADDR_PRESENT_TEMP  = 43   # Used for health-check reads (returns status error byte too)
 LEN_GOAL_POSITION  = 2
 
 PROTOCOL_VERSION   = 1.0
@@ -20,56 +19,49 @@ PROTOCOL_VERSION   = 1.0
 RAD_TO_RAW = 1023.0 / (300.0 * 3.141592653589793 / 180.0)  # ≈ 195.38
 CENTER_RAW = 512
 
+# Physical neutral positions from your manual test:
+#   coxa  → 512 raw  → offset = (512 - 512) / 195.38 = 0.000 rad
+#   femur → 631 raw  → offset = (631 - 512) / 195.38 = 0.609 rad
+#   tibia → 716 raw  → offset = (716 - 512) / 195.38 = 1.044 rad
 COXA_OFFSET  =  0.000
 FEMUR_OFFSET = -0.8264
 TIBIA_OFFSET = -1.7349
 
-# ── AX-12A Error Bit Definitions ──────────────────────────────────────────────
-# These bits appear in the Status Packet error byte after every read/write.
-# They are the same bits used in Address 17 (Alarm LED) and Address 18 (Alarm Shutdown).
-ERROR_BIT_DESCRIPTIONS = {
-    0: 'Input Voltage Error  — Supply voltage is out of the operating range',
-    1: 'Angle Limit Error    — Goal position is outside the CW/CCW angle limits',
-    2: 'Overheating Error    — Internal temperature exceeded the configured limit',
-    3: 'Range Error          — Command value is outside the valid usage range',
-    4: 'Checksum Error       — Instruction packet checksum is incorrect',
-    5: 'Overload Error       — Cannot control load with current max torque (STALL)',
-    6: 'Instruction Error    — Undefined or invalid instruction was received',
-}
-
-# ── Joint Config: ROS name → Dynamixel ID, offset, direction ──────────────────
+# Joint config: maps ROS joint name → Dynamixel ID, offset, direction
+# direction = -1 for right-side coxa joints (mirrored legs)
 JOINT_CONFIG = {
-    # Front Left  (FH_LH)
+    # Leg 1 — Front Left (FH_LH)
     'FH_LH_1': {'id': 11, 'offset': COXA_OFFSET,  'dir':  1},
     'FH_LH_2': {'id': 12, 'offset': FEMUR_OFFSET, 'dir': -1},
     'FH_LH_3': {'id': 13, 'offset': TIBIA_OFFSET, 'dir': -1},
 
-    # Front Right (FH_RH)
+    # Leg 2 — Front Right (FH_RH)
     'FH_RH_1': {'id': 61, 'offset': COXA_OFFSET,  'dir':  1},
     'FH_RH_2': {'id': 62, 'offset': FEMUR_OFFSET, 'dir': -1},
     'FH_RH_3': {'id': 63, 'offset': TIBIA_OFFSET, 'dir': -1},
 
-    # Middle Left (MH_LH)
+    # Leg 3 — Middle Left (MH_LH)
     'MH_LH_1': {'id': 21, 'offset': COXA_OFFSET,  'dir':  1},
     'MH_LH_2': {'id': 22, 'offset': FEMUR_OFFSET, 'dir': -1},
     'MH_LH_3': {'id': 23, 'offset': TIBIA_OFFSET, 'dir': -1},
 
-    # Middle Right (MH_RH)
+    # Leg 4 — Middle Right (MH_RH)
     'MH_RH_1': {'id': 51, 'offset': COXA_OFFSET,  'dir':  1},
     'MH_RH_2': {'id': 52, 'offset': FEMUR_OFFSET, 'dir': -1},
     'MH_RH_3': {'id': 53, 'offset': TIBIA_OFFSET, 'dir': -1},
 
-    # Back Right (BH_RH)
+    # Leg 5 — Back Right (BH_RH)
     'BH_RH_1': {'id': 41, 'offset': COXA_OFFSET,  'dir':  1},
     'BH_RH_2': {'id': 42, 'offset': FEMUR_OFFSET, 'dir': -1},
     'BH_RH_3': {'id': 43, 'offset': TIBIA_OFFSET, 'dir': -1},
 
-    # Back Left (BH_LH)
+    # Leg 6 — Back Left (BH_LH)
     'BH_LH_1': {'id': 31, 'offset': COXA_OFFSET,  'dir':  1},
     'BH_LH_2': {'id': 32, 'offset': FEMUR_OFFSET, 'dir': -1},
     'BH_LH_3': {'id': 33, 'offset': TIBIA_OFFSET, 'dir': -1},
 }
 
+# Same order as hexa_node's joint_names list
 JOINT_ORDER = [
     'FH_LH_1', 'FH_LH_2', 'FH_LH_3',
     'FH_RH_1', 'FH_RH_2', 'FH_RH_3',
@@ -85,26 +77,15 @@ def rad_to_raw(angle_rad, offset_rad, direction):
     return int(max(0, min(1023, round(raw))))
 
 
-def parse_error_byte(error_byte):
-    """Returns a list of human-readable error strings from the AX-12A status error byte."""
-    return [
-        desc
-        for bit, desc in ERROR_BIT_DESCRIPTIONS.items()
-        if error_byte & (1 << bit)
-    ]
-
-
 class DynamixelDriverNode(Node):
     def __init__(self):
         super().__init__('dynamixel_driver')
 
-        self.declare_parameter('device',          '/dev/ttyUSB0')
-        self.declare_parameter('baudrate',        1000000)
-        self.declare_parameter('health_check_hz', 0.5)       # 1 full scan every 2 seconds
+        self.declare_parameter('device',   '/dev/ttyUSB0')
+        self.declare_parameter('baudrate', 1000000)
 
-        device     = self.get_parameter('device').value
-        baudrate   = self.get_parameter('baudrate').value
-        health_hz  = self.get_parameter('health_check_hz').value
+        device   = self.get_parameter('device').value
+        baudrate = self.get_parameter('baudrate').value
 
         # Open port
         self._port   = PortHandler(device)
@@ -120,15 +101,16 @@ class DynamixelDriverNode(Node):
 
         self.get_logger().info(f'Opened {device} at {baudrate} baud.')
 
-        # SyncWrite group for simultaneous 18-motor commands
+        # SyncWrite group — same as your test script
         self._sync = GroupSyncWrite(
             self._port, self._packet,
             ADDR_GOAL_POSITION, LEN_GOAL_POSITION
         )
 
+        # Enable torque on all 18 motors
         self._set_torque(True)
 
-        # Subscribe to joint trajectory commands
+        # Subscribe to the same topic hexa_node publishes to
         self._sub = self.create_subscription(
             JointTrajectory,
             '/leg_trajectory_controller/joint_trajectory',
@@ -136,29 +118,19 @@ class DynamixelDriverNode(Node):
             10
         )
 
-        # ── Health Monitor ─────────────────────────────────────────────────────
-        # Tracks last known error state per joint (0 = no error)
-        self._error_state = {name: 0 for name in JOINT_CONFIG}
-        self._health_timer = self.create_timer(1.0 / health_hz, self._health_check)
+        self.get_logger().info('Dynamixel driver ready.')
 
-        self.get_logger().info(
-            f'Dynamixel driver ready. '
-            f'Health monitor active — scanning all 18 servos every {1.0/health_hz:.1f}s.'
-        )
-
-    # ── Joint Trajectory Callback ──────────────────────────────────────────────
     def _callback(self, msg: JointTrajectory):
         if not msg.points:
             return
 
+        # Map name → angle from the incoming message
         pos_map = dict(zip(msg.joint_names, msg.points[0].positions))
 
+        # Load all 18 joints into SyncWrite
         for name in JOINT_ORDER:
             if name not in pos_map:
-                self.get_logger().warn(
-                    f'Missing joint in message: {name}',
-                    throttle_duration_sec=5.0
-                )
+                self.get_logger().warn(f'Missing joint in message: {name}', throttle_duration_sec=5.0)
                 self._sync.clearParam()
                 return
 
@@ -166,71 +138,16 @@ class DynamixelDriverNode(Node):
             raw = rad_to_raw(pos_map[name], cfg['offset'], cfg['dir'])
             ok  = self._sync.addParam(cfg['id'], [DXL_LOBYTE(raw), DXL_HIBYTE(raw)])
             if not ok:
-                self.get_logger().error(
-                    f'addParam failed for {name} (ID {cfg["id"]})'
-                )
+                self.get_logger().error(f'addParam failed for {name} (ID {cfg["id"]})')
                 self._sync.clearParam()
                 return
 
+        # Fire one SyncWrite packet — moves all 18 motors simultaneously
         result = self._sync.txPacket()
         if result != COMM_SUCCESS:
-            self.get_logger().error(
-                f'SyncWrite failed: {self._packet.getTxRxResult(result)}'
-            )
+            self.get_logger().error(f'SyncWrite failed: {self._packet.getTxRxResult(result)}')
 
         self._sync.clearParam()
-
-    # ── Health Check: reads all 18 servos, parses all error bits ──────────────
-    def _health_check(self):
-        for name, cfg in JOINT_CONFIG.items():
-            dxl_id = cfg['id']
-
-            # Read present temperature — cheap read that also returns status error byte
-            temp, result, error = self._packet.read1ByteTxRx(
-                self._port, dxl_id, ADDR_PRESENT_TEMP
-            )
-
-            # No response from servo
-            if result != COMM_SUCCESS:
-                self.get_logger().warn(
-                    f'[HEALTH] ID {dxl_id:3d} ({name}) — '
-                    f'No response: {self._packet.getTxRxResult(result)}'
-                )
-                continue
-
-            # One or more error bits are set
-            if error != 0:
-                active_errors = parse_error_byte(error)
-
-                # Only print if error state changed (avoids log spam every 2s)
-                if error != self._error_state[name]:
-                    fault_lines = ''.join(f'│    ✗ {e}\n' for e in active_errors)
-                    self.get_logger().error(
-                        f'\n'
-                        f'┌─ DYNAMIXEL ALARM ──────────────────────────────────\n'
-                        f'│  Joint : {name}  (ID {dxl_id})\n'
-                        f'│  Temp  : {temp}°C\n'
-                        f'│  Error : 0x{error:02X}  (bits: {error:08b})\n'
-                        f'│  Faults:\n'
-                        f'{fault_lines}'
-                        f'└────────────────────────────────────────────────────'
-                    )
-                    self._error_state[name] = error
-
-            # No error
-            else:
-                # Log CLEARED if servo had a previous error
-                if self._error_state[name] != 0:
-                    self.get_logger().info(
-                        f'[HEALTH] ID {dxl_id:3d} ({name}) — '
-                        f'Error CLEARED ✓   Temp: {temp}°C'
-                    )
-                    self._error_state[name] = 0
-                else:
-                    # Normal OK — only visible with ros2 run ... --ros-args --log-level DEBUG
-                    self.get_logger().debug(
-                        f'[HEALTH] ID {dxl_id:3d} ({name}) — OK   Temp: {temp}°C'
-                    )
 
     def _set_torque(self, enable: bool):
         val = 1 if enable else 0
@@ -240,9 +157,7 @@ class DynamixelDriverNode(Node):
                 self._port, cfg['id'], ADDR_TORQUE_ENABLE, val
             )
             if res != COMM_SUCCESS:
-                self.get_logger().warn(
-                    f'Torque set failed for {name} (ID {cfg["id"]})'
-                )
+                self.get_logger().warn(f'Torque set failed for {name} (ID {cfg["id"]})')
 
     def destroy_node(self):
         self.get_logger().info('Shutting down — disabling torque and closing port.')
