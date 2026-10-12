@@ -27,6 +27,7 @@ setup(
             'hexa_node = hexa_control.hexa_node:main',
             'dynamixels_driver = hexa_control.dynamixels_controller:main',
             'sim_relay = hexa_control.sim_relay:main',
+            'teleop_keyboard = hexa_control.teleop_keyboard:main',
         ],
     },
 )
