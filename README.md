@@ -195,6 +195,11 @@ LH = Left Half   RH = Right Half
 - **Tripod B** (swing together): `FH_RH`, `MH_LH`, `BH_RH`
 
 ---
+## Actuations & Electronics
+
+![System Architecture](media/media-used/Gemini_Generated_Image_5qgxf45qgxf45qgx-clean.png)
+
+---
 
 ## Getting Started
 
