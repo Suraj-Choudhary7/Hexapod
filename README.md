@@ -18,7 +18,7 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
   - [hexa\_control](#hexa_control)
   - [root\_description](#root_description)
 - [Robot Specifications](#robot-specifications)
-- [Actuations & Electronics](#Actuations-Electronics)
+- [Actuations & Electronics](#actuations--electronics)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Build](#build)
@@ -27,8 +27,8 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
   - [URDF Viewer (RViz only)](#urdf-viewer-rviz-only)
 - [Controlling the Robot](#controlling-the-robot)
 - [Screenshots & Videos](#screenshots--videos)
-- [Future Roadmap](#roadmap)
-- [PROJECT MEMBERS](#members)
+- [Future Roadmap](#future-roadmap)
+- [PROJECT MEMBERS](#project-members)
 
 ---
 
