@@ -302,10 +302,10 @@ The robot reacts to `geometry_msgs/Twist` on `/cmd_vel`:
 | `linear.y` | Strafing left / right |
 | `angular.z` | Turning / rotating in place |
 
-You can also use `teleop_twist_keyboard`:
+You can also use `teleop_keyboard`:
 
 ```bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard
+ros2 run hexa_control teleop_keyboard
 ```
 or else use `teleop_twist_joy`:
 
