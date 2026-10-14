@@ -199,7 +199,7 @@ LH = Left Half   RH = Right Half
 ---
 ## Actuations & Electronics
 
-![System Architecture](media/media-used/Gemini_Generated_Image_5qgxf45qgxf45qgx-clean.png)
+![System Architecture](media/media-used/circuit.png)
 
 ---
 
