@@ -321,7 +321,7 @@ ros2 run joy joy_node
 ### Gazebo Fortress simulation
 ![Simulation](media/media-used/robot-demo.gif)
 ### Physical robot
-![Hardware](media/media-used/CPG-rotation.gif)
+![Hardware](media/media-used/CPG - rotation.gif)
 
 ---
 ## Simulation and Hardware Testing media drive
