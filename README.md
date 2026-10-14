@@ -283,7 +283,7 @@ ros2 run joy joy_node
 > Make sure your user is in the `dialout` group: `sudo usermod -aG dialout $USER`
 
 ### URDF Viewer (RViz only)
-![Rviz2](media/media-used/rviz.jpeg)
+![Rviz2](media/media-used/rviz.png)
 ```bash
 ros2 launch root_description display.launch.py
 ```
@@ -321,7 +321,7 @@ ros2 run joy joy_node
 ### Gazebo Fortress simulation
 ![Simulation](media/media-used/robot-demo.gif)
 ### Physical robot
-![Hardware](media/media-used/CPG-rotation.gif)
+![Hardware](media/media-used/CPG_rotation.gif)
 
 ---
 ## Simulation and Hardware Testing media drive
