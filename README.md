@@ -38,12 +38,12 @@ This project started from zero — no existing codebase, no pre-made libraries f
 
 **Mechanical & URDF**
 - Designed 6 identical leg assemblies, each with 3 revolute joints (coxa → femur → tibia), and assembled them symmetrically around a hexagonal base body.
-- Wrote the entire URDFbas a modular xacro file, including inertial tensors, STL mesh references (scaled from mm to m), and ros2\_control hardware interfaces.
-- Tuned joint limits to ±120° (2.094 rad), damping, and friction to match the physical Dynamixel AX behaviour.
+- Wrote the entire URDF as a modular xacro file, including inertial tensors, STL mesh references (scaled from mm to m), and ros2\_control hardware interfaces.
+- Tuned the joint limits to ±120° (2.094 rad), damping, and friction to match the physical Dynamixel AX behaviour.
 
 **3-DOF Inverse & Forward Kinematics**
 - Derived the analytical IK for the leg: coxa rotation (θ₁) from `atan2(y, x)`, then a 2-link planar IK in the vertical plane for femur (θ₂) and tibia (θ₃) using the law of cosines.
-- Implemented zero-angle compensation (`femur_zero_angle = -35°`, `tibia_zero_angle = -60°`) to map from geometric angles to servo-relative angles.
+- Added zero-angle compensation (`femur_zero_angle = -35°`, `tibia_zero_angle = -60°`) to map from geometric angles to servo-relative angles.
 - Also implemented forward kinematics for verification.
 
 **CPG Gait Generator**
@@ -62,17 +62,15 @@ This project started from zero — no existing codebase, no pre-made libraries f
 **Dynamixel Hardware Driver**
 
 - Wrote a low-level ROS 2 node that subscribes to the same `JointTrajectory` topic and drives 18 Dynamixel AX servos via **GroupSyncWrite** — one USB packet per control cycle instead of 18 individual writes, keeping latency low.
-- Implemented the angle → raw-value conversion with per-joint direction and zero-offset correction so the same IK angles work identically on both hardware and simulation.
+- Used the angle → raw-value conversion with per-joint direction and zero-offset correction so the same IK angles work identically on both hardware and simulation.
 
 **Simulation Bridge**
-- Because Gazebo joint directions differ from physical servo directions, We wrote a lightweight `sim_relay` node that intercepts the trajectory, applies per-joint direction and offset corrections, and republis`hes — keeping `hexa_node` hardware-agnostic.
+- Because Gazebo joint directions differ from physical servo directions, We made a lightweight `sim_relay` node that intercepts the trajectory, applies per-joint direction and offset corrections, and republis`hes — keeping `hexa_node` hardware-agnostic.
 
 **Gazebo Fortress Integration**
 - Integrated `gz_ros2_control` so the simulated robot is driven by the same `JointTrajectoryController` as the real one.
 - Set up `ros_gz_bridge` for `/clock`, `/tf`, and `/odom` bridging.
 - Tuned the controller YAML for **open-loop mode** — necessary because `hexa_node` streams 1-point trajectories at 50 Hz and closed-loop would keep aborting goals mid-execution.
-
----
 
 ---
 
