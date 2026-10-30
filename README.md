@@ -12,7 +12,6 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
 ## Table of Contents
 
 - [What We Built & Learned](#what-we-built--learned)
-- [Repository Structure](#repository-structure)
 - [System Architecture](#system-architecture)
 - [Package Details](#package-details)
   - [hexa\_control](#hexa_control)
@@ -27,6 +26,7 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
   - [URDF Viewer (RViz only)](#urdf-viewer-rviz-only)
 - [Controlling the Robot](#controlling-the-robot)
 - [Screenshots & Videos](#screenshots--videos)
+- [Repository Structure](#repository-structure)
 - [Future Roadmap](#future-roadmap)
 - [PROJECT MEMBERS](#project-members)
 
@@ -73,38 +73,6 @@ This project started from zero — no existing codebase, no pre-made libraries f
 - Tuned the controller YAML for **open-loop mode** — necessary because `hexa_node` streams 1-point trajectories at 50 Hz and closed-loop would keep aborting goals mid-execution.
 
 ---
-
-## Repository Structure
-
-```
-Hexapod/
-├── hexa_control/          # ROS 2 Python package — walking controller + hardware driver
-│   ├── hexa_control/
-│   │   ├── hexa_node.py            # Main control node (CPG + IK + state machine)
-│   │   ├── gait.py                 # CPG Hopf oscillator gait generator
-│   │   ├── kinematics.py           # Analytical 3-DOF IK / FK
-│   │   ├── dynamixels_controller.py# Dynamixel AX hardware driver node
-│   │   └── sim_relay.py            # Simulation direction-correction bridge
-│   ├── setup.py
-│   └── package.xml
-│
-└── root_description/      # ROS 2 CMake package — URDF, meshes, launch, config
-    ├── urdf/
-    │   ├── root.xacro              # Main robot URDF (all links & joints)
-    │   ├── root.ros2_control.xacro # ros2_control hardware interface
-    │   ├── root.gazebo.xacro       # Gazebo-specific plugins
-    │   └── materials.xacro         # Visual materials
-    ├── meshes/                     # STL files for all robot links
-    ├── launch/
-    │   ├── gz_sim.launch.py        # Full Gazebo Fortress + controller + hexa_node
-    │   └── display.launch.py       # RViz + joint_state_publisher_gui (no sim)
-    ├── config/
-    │   └── controllers.yaml        # ros2_control controller config (100 Hz)
-    ├── worlds/
-    │   └── hexapod_world.sdf       # Custom Gazebo world
-    └── rviz/
-        └── root.rviz               # RViz configuration
-```
 
 ---
 
@@ -327,6 +295,39 @@ ros2 run joy joy_node
 ## Simulation and Hardware Testing media drive
 - [Dirve Link](https://drive.google.com/drive/folders/1DYs-i9VanPpIxLYpR6Dh4BsIsk7aPIrG)
 ---
+
+## Repository Structure
+
+```
+Hexapod/
+├── hexa_control/          # ROS 2 Python package — walking controller + hardware driver
+│   ├── hexa_control/
+│   │   ├── hexa_node.py            # Main control node (CPG + IK + state machine)
+│   │   ├── gait.py                 # CPG Hopf oscillator gait generator
+│   │   ├── kinematics.py           # Analytical 3-DOF IK / FK
+│   │   ├── dynamixels_controller.py# Dynamixel AX hardware driver node
+│   │   └── sim_relay.py            # Simulation direction-correction bridge
+│   ├── setup.py
+│   └── package.xml
+│
+└── root_description/      # ROS 2 CMake package — URDF, meshes, launch, config
+    ├── urdf/
+    │   ├── root.xacro              # Main robot URDF (all links & joints)
+    │   ├── root.ros2_control.xacro # ros2_control hardware interface
+    │   ├── root.gazebo.xacro       # Gazebo-specific plugins
+    │   └── materials.xacro         # Visual materials
+    ├── meshes/                     # STL files for all robot links
+    ├── launch/
+    │   ├── gz_sim.launch.py        # Full Gazebo Fortress + controller + hexa_node
+    │   └── display.launch.py       # RViz + joint_state_publisher_gui (no sim)
+    ├── config/
+    │   └── controllers.yaml        # ros2_control controller config (100 Hz)
+    ├── worlds/
+    │   └── hexapod_world.sdf       # Custom Gazebo world
+    └── rviz/
+        └── root.rviz               # RViz configuration
+```
+
 ## Future Roadmap
 
 - [ ] IMU-based body levelling
