@@ -11,7 +11,7 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
 
 ## Table of Contents
 
-- [What I Built & Learned](#what-i-built--learned)
+- [What We Built & Learned](#what-we-built--learned)
 - [Repository Structure](#repository-structure)
 - [System Architecture](#system-architecture)
 - [Package Details](#package-details)
