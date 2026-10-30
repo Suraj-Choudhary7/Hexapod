@@ -167,6 +167,12 @@ LH = Left Half   RH = Right Half
 
 ![System Architecture](media/media-used/circuit.png)
 
+Raspberry Pi 3
+The central computing unit that executes high-level control algorithms, including ROS 2 nodes, Inverse Kinematics calculations, and Central Pattern Generator (CPG) tripod gait generation. It acts as the brain, streaming positional commands to the lower-level hardware.U2D2 USB Communication Converter
+A compact hardware interface that connects the Raspberry Pi to the actuator network. It translates USB data from the Pi into the precise serial communication signals required to control and monitor the servos.TTL Communication
+A 3-pin, half-duplex asynchronous serial communication protocol. It utilizes a single shared data line to both transmit commands and receive feedback, allowing dozens of actuators to be efficiently daisy-chained together on a single bus.Dynamixel AX-12A Smart Actuators
+The core motors driving the system's joints. Connected via the TTL daisy-chain, they execute precise positional commands and continuously feed real-time telemetry—such as current position, load, and internal temperature—back to the central controller.Power Hub BoardBecause the U2D2 only handles data transmission and cannot supply power to the motors directly, this distribution board merges the TTL data signal from the U2D2 with the high-current power lines, distributing stable voltage across the daisy-chained actuator network.   3S LiPo Battery
+A 3-cell Lithium Polymer battery providing a nominal 11.1V. This matches the optimal operating voltage of the AX-12A servos, delivering the rapid discharge current necessary to drive all 18-DOF hexapod joints under load simultaneously.
 ---
 
 ## Getting Started
