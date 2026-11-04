@@ -1,6 +1,6 @@
 # Hexapod Robot — ROS 2 / Gazebo Fortress
 
-![HexaPod](media/media-used/hexapod.png)
+![HexaPod](media/media-used/![alt text](image.png))
 
 A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixel AX-series servos, a hand-derived URDF, and a fully original CPG-based walking controller written in Python on ROS 2 Humble.
 
