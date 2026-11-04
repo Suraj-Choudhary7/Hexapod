@@ -27,7 +27,6 @@ A 6-legged (hexapod) robot built from scratch: custom 3D-printed links, Dynamixe
 - [Controlling the Robot](#controlling-the-robot)
 - [Screenshots & Videos](#screenshots--videos)
 - [Repository Structure](#repository-structure)
-- [Future Roadmap](#future-roadmap)
 - [PROJECT MEMBERS](#project-members)
 
 ---
@@ -343,13 +342,6 @@ Hexapod/
         └── root.rviz               # RViz configuration
 ```
 
-## Future Roadmap
-
-- [ ] IMU-based body levelling
-- [ ] Terrain-adaptive foot force estimation
-- [ ] Navigation stack integration (Nav2 + LiDAR)
-- [ ] Faster gait modes (wave, ripple)
-- [ ] GUI parameter tuner for CPG gains
 
 ## PROJECT MEMBERS
 
